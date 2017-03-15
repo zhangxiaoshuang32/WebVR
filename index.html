@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECharts & WebVR学院</title>
+    <link rel="stylesheet" href="src/bootstrap.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <script src="src/jquery2.1.4.js"></script>
+    <script src="src/bootstrap.js"></script>
+    <script src="src/js/main.js"></script>
+
+    <link rel="stylesheet" href="src/unslider-dots.css">
+    <link rel="stylesheet" href="src/unslider.css">
+    <link rel="stylesheet" href="src/css/slider.css">
+    <script src="src/unslider.js"></script>
+    <script src="threeJs/src/three.js"></script>
+    <script src="threeJs/src/js/car.js"></script>
+    <style>
+        .banner { position: relative; overflow: auto; }
+        .banner li { list-style: none; }
+        .banner ul li { float: left; }
+    </style>
+</head>
+<body onload="init()">
+<!-- Title -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="" class="navbar-brand">张小双</a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">
+                        作业
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="themes">
+                        <li><a id="hm1" onclick="moveDots(0,page1)">No.1 - Three.js 入门</a></li>
+                        <li><a id="hm2" onclick="moveDots(1,page1)">No. 2 - 光与影</a></li>
+                        <li><a id="hm3" onclick="moveDots(2,page1)">No. 3 - 材质与纹理</a></li>
+                        <li><a onclick="moveDots(3,page1)">No. 4 - 照相机和交互控制</a></li>
+                        <li><a onclick="moveDots(4,page1)">No.5 - 动画</a></li>
+                        <li class="divider"></li>
+                        <li><a onclick="moveDots(5,page1)">No.6 - 外部模型</a></li>
+                        <li><a onclick="moveDots(6,page1)">No.7 - 着色器</a></li>
+                        <li><a onclick="moveDots(7,page1)">No.8 - 物理引擎</a></li>
+                        <li><a onclick="moveDots(8,page1)">No.9 - WebVR</a></li>
+                        <li><a onclick="moveDots(9,page1)">No.10 -【综合】追风年代：第一人称三维赛车游戏</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Content ------------------------------------------------------------------------>
+<div class="container" style="position:relative;top:51px;width: 100%;">
+    <div class="row" id="Content" style="margin-top:10px;">
+        <!--#497590-->
+        <div class="col-md-3" >
+
+            <div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        <h4 class="list-group-item-heading">ECharts & WebVR学院</h4>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">WebVR部分</h5>
+                        <p class="list-group-item-text"></p>
+                    </a>
+                </div>
+                <!--左侧栏-->
+                <div class="module">
+                    <div class="list-group">
+                        <a  class="list-group-item" onclick="moveDots(0,page1)">WebGL No.1 - Three.js 入门
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(1,page1)">WebGL No. 2 - 光与影
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(2,page1)">WebGL No. 3 - 材质与纹理
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(3,page1)">WebGL No. 4 - 照相机和交互控制
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(4,page1)">WebGL No.5 - 动画
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(5,page1)">WebGL No.6 - 外部模型
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(6,page1)">WebGL No.7 - 着色器
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(7,page1)">WebGL No.8 - 物理引擎
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(8,page1)">WebGL No.9 - WebVR
+                            <span class="badge">go</span>
+                        </a>
+                        <a  class="list-group-item" onclick="moveDots(9,page1)">WebGL No.10 -【综合】追风年代：第一人称三维赛车游戏
+                            <span class="badge">go</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--正文------------------------------------------------------------------------>
+        <div class="col-md-8" style="height: 530px;background-color: #F2F2F2; margin-right: 5px;padding:20px;border-radius: 10px;">
+            <div class="WrapClass">
+                <div id="page1" class="banner">
+                    <ul id="ul1">
+                        <li>
+                            <h2>No.1 - Three.js 入门</h2>
+                            <canvas id="mainCanvas" width="400px" height="300px" style="margin: 7%;"></canvas>
+                        </li>
+                        <li >
+                            <h2>No. 2 - 光与影</h2>
+                            页面2
+                        <li>
+                            <h2>No. 3 - 材质与纹理</h2>
+                            页面3
+                        </li>
+                        <li>
+                            <h2>No. 4 - 照相机和交互控制</h2>
+                            页面4
+                        </li>
+                        <li>
+                            <h2>No.5 - 动画</h2>
+                            页面5
+                        </li>
+                        <li>
+                            <h2>No.6 - 外部模型</h2>
+                            页面6
+                        </li>
+                        <li>
+                            <h2>No.7 - 着色器</h2>
+                            页面7
+                        </li>
+                        <li>
+                            <h2>No.8 - 物理引擎</h2>
+                            页面8
+                        </li>
+                        <li>
+                            <h2>No.9 - WebVR</h2>
+                            页面9
+                        </li>
+                        <li>
+                            <h2>No.10 -【综合】追风年代：第一人称三维赛车游戏</h2>
+                            页面10
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<a href="javascript:;" id="btn" title="回到顶部"></a>-->
+
+<script>
+    let page1=$('#page1').unslider();
+    function moveDots(dest,pageId ){
+//        "use strict";
+        let data = pageId.data("unslider");
+        let cur = data.current;
+        if(cur == dest){
+            return;
+        }
+        let num;
+        if(cur<dest){
+            num = dest - cur;
+            for(let i = 0;i <num;i++){
+                data.next();
+            }
+        }else{
+            num = cur -dest;
+            for(let i = 0;i <num;i++){
+                data.prev();
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

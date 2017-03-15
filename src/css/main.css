@@ -1,0 +1,63 @@
+.colClass{
+    height: 400px;
+    background-color: #E6E2EB;
+    margin-right: 5px;
+}
+body{
+    background-image: url("../images/flower.png");
+    -moz-background-size:70px 138px; /* 老版本的 Firefox */
+    background-size:70px 138px;
+    background-repeat:repeat;
+}
+#btn{
+    display: none;
+    position: fixed;
+    right: 2%;
+    bottom: 20%;
+    height:28px;
+    width: 82px;
+    background-image: url("../images/back.png");
+    background-repeat:no-repeat;
+}
+/*------------------------------------------------------*/
+/*标题栏*/
+.navbar-default{
+    border-color: #FFC9C3 !important;
+    background-color: #FFC9C3 !important;
+    background-image: linear-gradient(#F2CDC7, #FFC9C3 60%, #EFCBCC);
+}
+.navbar-collapse{
+    border-color: #FFC9C3 !important;
+}
+a:hover,a:focus{
+    color:#ABB2DA!important;
+}
+/*------------------------------------------------------------------*/
+.navbar-toggle{
+    border-color: #FFFFFF !important;
+}
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus  {
+    background-color: #ABB2DA!important;
+
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #89A6CC!important;
+    /*font-style: #FFFFFF !important;*/
+    color:#FFFFFF !important;
+}
+.dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus{
+    color:#FFFFFF !important;
+}
+/*----------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color:#ABB2DA !important;
+    border-color:#89A6CC !important;
+    color: #ffffff !important;
+}
+.badge{
+    background-color:#89A6CC !important;
+}
+.col-md-8{
+    text-align: center;
+}

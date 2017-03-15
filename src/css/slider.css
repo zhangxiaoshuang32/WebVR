@@ -1,0 +1,55 @@
+.col-md-8>a,a:active,a:hover{
+    text-decoration:none;
+    color:grey;
+}
+
+
+.WrapClass{
+    position:relative;
+    width:90%;
+    height:60%;
+    margin:0 auto;
+    text-align: center;
+}
+.banner{
+    border-radius: 10px;
+}
+.banner>ul>li{
+    height:480px;
+    /*width:100px;*/
+    /*background-color: #7DADD1;*/
+    background-color: transparent;
+}
+.unslider-arrow.next{
+    bottom:20%;
+    display: block;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    background: grey no-repeat 50% 50%;
+    background-image: url("../images/arrow.png");
+    background-size: 7px 11px;
+    border-radius: 32px;
+    text-indent: -999em;
+    opacity: .6;
+}
+.unslider-arrow.prev{
+    bottom:20%;
+    display: block;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    background:grey no-repeat 50% 50%;
+    background-image: url("../images/arrow.png");
+    background-size: 7px 11px;
+    border-radius: 32px;
+    text-indent: -999em;
+    opacity: .6;
+    transform: rotate(-180deg);
+}
+.unslider-nav ol li {
+    border: 2px solid grey;
+}
+.unslider-nav ol li.unslider-active{
+    background: grey;
+}
