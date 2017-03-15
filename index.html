@@ -15,13 +15,14 @@
     <script src="src/unslider.js"></script>
     <script src="threeJs/src/three.js"></script>
     <script src="threeJs/src/js/car.js"></script>
+    <script src="threeJs/src/js/car2.js"></script>
     <style>
         .banner { position: relative; overflow: auto; }
         .banner li { list-style: none; }
         .banner ul li { float: left; }
     </style>
 </head>
-<body onload="init()">
+<body>
 <!-- Title -->
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -119,9 +120,9 @@
                             <h2>No.1 - Three.js 入门</h2>
                             <canvas id="mainCanvas" width="400px" height="300px" style="margin: 7%;"></canvas>
                         </li>
-                        <li >
+                        <li>
                             <h2>No. 2 - 光与影</h2>
-                            页面2
+                            <canvas id="mainCanvas2" width="400px" height="350px" style="margin: 5%;"></canvas>
                         <li>
                             <h2>No. 3 - 材质与纹理</h2>
                             页面3
@@ -185,7 +186,8 @@
             }
         }
     }
-
+    init();
+    init2();
 </script>
 </body>
 </html>
