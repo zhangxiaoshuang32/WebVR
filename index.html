@@ -16,6 +16,7 @@
     <script src="threeJs/src/three.js"></script>
     <script src="threeJs/src/js/car.js"></script>
     <script src="threeJs/src/js/car2.js"></script>
+    <script src="threeJs/src/js/car3.js"></script>
     <style>
         .banner { position: relative; overflow: auto; }
         .banner li { list-style: none; }
@@ -112,20 +113,21 @@
             </div>
         </div>
         <!--正文------------------------------------------------------------------------>
-        <div class="col-md-8" style="height: 530px;background-color: #F2F2F2; margin-right: 5px;padding:20px;border-radius: 10px;">
+        <!--#F2F2F2-->
+        <div class="col-md-8" style="height: 530px;background-color: rgba(255, 251, 240,0.4);border:1px solid lightgrey;margin-right: 5px;padding:20px;border-radius: 8px;box-shadow: 2px 2px 5px lightgrey !important;">
             <div class="WrapClass">
                 <div id="page1" class="banner">
                     <ul id="ul1">
                         <li>
                             <h2>No.1 - Three.js 入门</h2>
-                            <canvas id="mainCanvas" width="400px" height="300px" style="margin: 7%;"></canvas>
+                            <canvas id="mainCanvas" width="400px" height="300px" style=" margin: 7%;"></canvas>
                         </li>
                         <li>
                             <h2>No. 2 - 光与影</h2>
                             <canvas id="mainCanvas2" width="400px" height="350px" style="margin: 5%;"></canvas>
                         <li>
                             <h2>No. 3 - 材质与纹理</h2>
-                            页面3
+                        <canvas id="mainCanvas3" width="400px" height="350px" style="margin: 5%;">
                         </li>
                         <li>
                             <h2>No. 4 - 照相机和交互控制</h2>
@@ -188,6 +190,7 @@
     }
     init();
     init2();
+    init3();
 </script>
 </body>
 </html>
