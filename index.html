@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="src/css/main.css">
     <script src="src/jquery2.1.4.js"></script>
     <script src="src/bootstrap.js"></script>
-    <script src="src/js/main.js"></script>
+    <!--<script src="src/js/main.js"></script>-->
 
     <link rel="stylesheet" href="src/unslider-dots.css">
     <link rel="stylesheet" href="src/unslider.css">
     <link rel="stylesheet" href="src/css/slider.css">
     <script src="src/unslider.js"></script>
+
     <script src="threeJs/src/three.js"></script>
-    <script src="threeJs/src/js/car.js"></script>
-    <script src="threeJs/src/js/car2.js"></script>
-    <script src="threeJs/src/js/car3.js"></script>
+    <script src="threeJs/src/controls/TrackballControls.js"></script>
+    <script src="threeJs/src/Detector.js"></script>
+
     <style>
         .banner { position: relative; overflow: auto; }
         .banner li { list-style: none; }
@@ -127,11 +128,11 @@
                             <canvas id="mainCanvas2" width="400px" height="350px" style="margin: 5%;"></canvas>
                         <li>
                             <h2>No. 3 - 材质与纹理</h2>
-                        <canvas id="mainCanvas3" width="400px" height="350px" style="margin: 5%;">
+                        <canvas id="mainCanvas3" width="400px" height="350px" style="margin: 5%;"></canvas>
                         </li>
                         <li>
                             <h2>No. 4 - 照相机和交互控制</h2>
-                            页面4
+                            <canvas id="mainCanvas4" width="400px" height="350px" style="margin: 5%;"></canvas>
                         </li>
                         <li>
                             <h2>No.5 - 动画</h2>
@@ -165,7 +166,10 @@
 
 </div>
 <!--<a href="javascript:;" id="btn" title="回到顶部"></a>-->
-
+<script src="threeJs/src/js/car.js"></script>
+<script src="threeJs/src/js/car2.js"></script>
+<script src="threeJs/src/js/car3.js"></script>
+<script src="threeJs/src/js/car4.js"></script>
 <script>
     let page1=$('#page1').unslider();
     function moveDots(dest,pageId ){
@@ -191,6 +195,8 @@
     init();
     init2();
     init3();
+    init4();
+    animatedemo();
 </script>
 </body>
 </html>
