@@ -17,6 +17,8 @@
     <script src="threeJs/src/three.js"></script>
     <script src="threeJs/src/controls/TrackballControls.js"></script>
     <script src="threeJs/src/Detector.js"></script>
+    <script src="threeJs/src/stats.min.js"></script>
+    <script src="threeJs/src/dat.gui.min.js"></script>
 
     <style>
         .banner { position: relative; overflow: auto; }
@@ -130,13 +132,15 @@
                             <h2>No. 3 - 材质与纹理</h2>
                         <canvas id="mainCanvas3" width="400px" height="350px" style="margin: 5%;"></canvas>
                         </li>
-                        <li>
+                        <li id="mydiv5">
                             <h2>No. 4 - 照相机和交互控制</h2>
-                            <canvas id="mainCanvas4" width="400px" height="350px" style="margin: 5%;"></canvas>
+                            <canvas id="mainCanvas4" width="400px" height="350px"></canvas>
+                            <p>通过鼠标左键、右键、滚轮来控制物体的旋转、缩放、平移</p>
                         </li>
                         <li>
                             <h2>No.5 - 动画</h2>
-                            页面5
+                            <canvas id="mainCanvas5" width="400px" height="350px"></canvas>
+                            <p>通过键盘的wasd控制小车的前进、后退、左转、右转</p>
                         </li>
                         <li>
                             <h2>No.6 - 外部模型</h2>
@@ -170,6 +174,7 @@
 <script src="threeJs/src/js/car2.js"></script>
 <script src="threeJs/src/js/car3.js"></script>
 <script src="threeJs/src/js/car4.js"></script>
+<script src="threeJs/src/js/car5.js"></script>
 <script>
     let page1=$('#page1').unslider();
     function moveDots(dest,pageId ){

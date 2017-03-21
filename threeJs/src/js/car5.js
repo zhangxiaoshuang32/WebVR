@@ -1,0 +1,215 @@
+/**
+ * Created by zhangxiaoshuang on 2017/3/21.
+ */
+let statFive = null;
+let sceneFive = null;
+let cameraFive = null;
+let rendererFive = null;
+
+let cubeFive = null;
+let torsFive1=null;
+let torsFive2=null;
+let torsFive3 = null;
+let torsFive4=null;
+let groupFive =null;
+
+function init5(){
+    //初始化监视器
+    statFive = new Stats();
+    statFive.domElement.style.position = "absolute";
+    statFive.domElement.style.left = '80%';
+    statFive.domElement.style.top = "0px";
+    let mydiv = document.getElementById('mydiv5');
+    mydiv.appendChild(statFive.domElement);
+
+    //初始化WebGL画布
+    rendererFive = new THREE.WebGLRenderer({
+        antialias:true,
+        precision:"highp",
+        canvas: document.getElementById('mainCanvas5')
+    });
+    rendererFive.setClearColor(0xffffff,0.3);
+    rendererFive.shadowMapEnabled = true;
+
+    //初始化场景
+    sceneFive=new THREE.Scene();
+
+    //初始化相机
+    cameraFive=new THREE.PerspectiveCamera(45,4/3,1,1000);
+    cameraFive.position.set(28,28,40);
+    cameraFive.lookAt(new THREE.Vector3(0,0,0));
+
+    sceneFive.add(cameraFive);
+    //初始化材料（可阴影材料）
+    let material=new THREE.MeshLambertMaterial({
+        color: 0xffffff,
+    });
+
+    //初始化物体
+    cubeFive=new THREE.Mesh(new THREE.CubeGeometry(35,10,16),material);
+    torsFive1=new THREE.Mesh(new THREE.TorusGeometry(3,1,14,18,2*Math.PI),material);
+    torsFive2=new THREE.Mesh(new THREE.TorusGeometry(3,1,14,18,2*Math.PI),material);
+    torsFive3=new THREE.Mesh(new THREE.TorusGeometry(3,1,14,18,2*Math.PI),material);
+    torsFive4=new THREE.Mesh(new THREE.TorusGeometry(3,1,14,18,2*Math.PI),material);
+    torsFive1.position.set(-10,-5,-8);
+    torsFive2.position.set(10,-5,-8);
+    torsFive3.position.set(-10,-5,8);
+    torsFive4.position.set(10,-5,8);
+    cubeFive.castShadow = true;
+    torsFive1.castShadow = true;
+    torsFive2.castShadow = true;
+    torsFive3.castShadow = true;
+    torsFive4.castShadow = true;
+
+    /*确定旋转点*/
+    let pivotPoint = new THREE.Object3D();
+    pivotPoint.add(torsFive1);
+    pivotPoint.add(torsFive2);
+    pivotPoint.add(torsFive3);
+    pivotPoint.add(torsFive4);
+    cubeFive.add(pivotPoint);
+    sceneFive.add(cubeFive);
+    cubeFive.name = 'cubeName';
+
+    //平面
+    let plane = new THREE.Mesh(new THREE.PlaneGeometry(120, 60, 16, 16),new THREE.MeshLambertMaterial({
+        color: 0x97A972
+    }));
+    plane.rotation.x = -Math.PI / 2;
+    plane.position.y = -9;
+    plane.receiveShadow = true;
+    sceneFive.add(plane);
+
+    //初始化灯光
+    let light = new THREE.SpotLight(0xffff00, 1, 100, Math.PI / 6, 25);
+    light.target = cubeFive;
+    light.castShadow = true;
+    light.position.set(-10,45,40);
+    sceneFive.add(light);
+    //ambient light
+    let ambient = new THREE.AmbientLight(0x666666);
+    sceneFive.add(ambient);
+
+    drawAxes(sceneFive);
+    rendererFive.render(sceneFive,cameraFive);
+}
+
+control = new function () {
+    this.rotationSpeedY = 0.002;
+};
+
+function addController(){
+    let gui = new dat.GUI();
+    gui.add(control, 'rotationSpeedY', -0.2, 0.2);
+}
+function renderLeft(){
+    rendererFive.render(sceneFive, cameraFive);
+    sceneFive.getObjectByName('cubeName').rotation.y += control.rotationSpeedY;
+    requestAnimationFrame(renderLeft);
+}
+function renderRight(){
+    rendererFive.render(sceneFive, cameraFive);
+    sceneFive.getObjectByName('cubeName').rotation.y -= control.rotationSpeedY;
+    requestAnimationFrame(renderRight);
+}
+//左拐A
+function drawLeft() {
+    statFive.begin();
+    rendererFive.clear();
+    let id = renderLeft();
+    if (id !== null) {
+        cancelAnimationFrame(id);
+        id = null;
+    }
+    statFive.end();
+}
+//右拐D
+function drawRight() {
+    statFive.begin();
+    rendererFive.clear();
+    let id = renderRight();
+    if (id !== null) {
+        cancelAnimationFrame(id);
+        id = null;
+    }
+    statFive.end();
+}
+//前进w
+function drawFront() {
+    statFive.begin();
+    sceneFive.getObjectByName('cubeName').position.x += 1;
+    rendererFive.render(sceneFive, cameraFive);
+    statFive.end();
+}
+//后退s
+function drawBack() {
+    statFive.begin();
+    sceneFive.getObjectByName('cubeName').position.x -= 1;
+    rendererFive.render(sceneFive, cameraFive);
+    statFive.end();
+}
+//asdw键盘控制
+function keyUp(e) {
+    let currKey=0,t=e||event;
+    currKey=t.keyCode||t.which||t.charCode;
+    //a左转弯
+    if(currKey == 65){
+        drawLeft();
+//            setInterval(drawRight, 2);
+        setTimeout(drawRight,1000);
+    }
+    //d右转弯
+    if(currKey == 68){
+        drawRight();
+        setTimeout(drawLeft,1000);
+    }
+    //w前进
+    if(currKey == 87){
+        drawFront();
+    }
+    //s后退
+    if(currKey == 83){
+        drawBack();
+    }
+
+}
+document.onkeyup = keyUp;
+
+function drawAxes(scene) {
+    // x-axis
+    let xGeo = new THREE.Geometry();
+    xGeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    xGeo.vertices.push(new THREE.Vector3(40, 0, 0));
+    let xMat = new THREE.LineBasicMaterial({
+        color: 0xff0000
+    });
+    let xAxis = new THREE.Line(xGeo, xMat);
+    scene.add(xAxis);
+
+    // y-axis
+    let yGeo = new THREE.Geometry();
+    yGeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    yGeo.vertices.push(new THREE.Vector3(0, 40, 0));
+    let yMat = new THREE.LineBasicMaterial({
+        color: 0x00ff00
+    });
+    let yAxis = new THREE.Line(yGeo, yMat);
+    scene.add(yAxis);
+
+    // z-axis
+    let zGeo = new THREE.Geometry();
+    zGeo.vertices.push(new THREE.Vector3(0, 0, 0));
+    zGeo.vertices.push(new THREE.Vector3(0, 0, 40));
+    let zMat = new THREE.LineBasicMaterial({
+        color: 0x00ccff
+    });
+    let zAxis = new THREE.Line(zGeo, zMat);
+    scene.add(zAxis);
+}
+
+function threeExcute(){
+    init5();
+    addController();
+//        render();
+}
+threeExcute();
